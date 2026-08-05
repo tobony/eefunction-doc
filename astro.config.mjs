@@ -75,8 +75,18 @@ export default defineConfig({
 					label: 'Functions',
 					translations: { ko: '함수' },
 					items: [
-						{ label: 'General Functions', link: '/function/general-function/', translations: { ko: '일반 함수' } },
-						{ label: 'Engineering Functions', link: '/function/engineering-function/', translations: { ko: '공학 함수' } },
+						{
+							label: 'General Functions',
+							link: '/function/general-function/',
+							translations: { ko: '일반 함수' },
+							badge: { text: 'Free', variant: 'success' },
+						},
+						{
+							label: 'Engineering Functions',
+							link: '/function/engineering-function/',
+							translations: { ko: '공학 함수' },
+							badge: { text: 'Free + Pro', variant: 'note' },
+						},
 					],
 				},
 				{
