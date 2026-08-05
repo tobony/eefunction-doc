@@ -1,0 +1,16 @@
+---
+import Default from '@astrojs/starlight/components/SocialIcons.astro';
+
+const links = [
+	{ label: 'Product', href: 'https://eefunction.brbrsoft.com/' },
+	{ label: 'Examples', href: 'https://eefunction.brbrsoft.com/examples/' },
+	{ label: 'Pricing', href: 'https://eefunction.brbrsoft.com/pricing/' },
+];
+---
+
+<div class="ee-header-actions">
+	<nav class="ee-product-links" aria-label="eeFunction product navigation">
+		{links.map((link) => <a href={link.href}>{link.label}</a>)}
+	</nav>
+	<Default />
+</div>
