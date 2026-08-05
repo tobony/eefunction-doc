@@ -20,7 +20,7 @@ import { Badge } from '@astrojs/starlight/components';
 
 **예제 — 압력과 온도로 비엔탈피 계산**
 
-```excel
+```text
 =ee.STEAMH_PT(2, 150)
 ```
 
@@ -34,7 +34,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 **예제 — 밀도**
 
-```excel
+```text
 =ee.SEAWTR_DENSITY(25, 35, 1.013)
 ```
 
@@ -42,7 +42,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 **예제 — 비열**
 
-```excel
+```text
 =ee.SEAWTR_SPCHEAT(25, 35, 1.013)
 ```
 
@@ -62,7 +62,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 **예제 — 건구온도, 상대습도 및 대기압으로 밀도 계산**
 
-```excel
+```text
 =ee.HUMIDAIR_RHO_TDRY_RH_P(35, 0.6, 1.013)
 ```
 
@@ -78,7 +78,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 **예제 — 압력, 온도 및 가스 조성으로 밀도 계산**
 
-```excel
+```text
 =ee.GASRHO_PT(2, 35, Methane[0.6]&Ethane[0.4])
 =ee.GASRHO_PT(2, 35, B3)
 ```
@@ -91,7 +91,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 **예제 — 질량 기준 저위발열량**
 
-```excel
+```text
 =ee.GASLHVMASS(Methane[0.6]&Ethane[0.4])
 ```
 
@@ -103,7 +103,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 유체명, 분율 및 몰/질량 기준 옵션으로 가스 조성 문자열을 생성합니다.
 
-```excel
+```text
 =ee.FluidString({Methane;Ethane;Propane}, {0.6;0.3;0.1}, "mol")
 ```
 
@@ -111,7 +111,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 생성 결과를 가스 물성 함수에 직접 사용할 수 있습니다.
 
-```excel
+```text
 =ee.GASRHO_PT(2, 35, ee.FluidString({Methane;Ethane}, {0.6;0.4}))
 ```
 
@@ -128,7 +128,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 배관 내경, 절대조도 및 레이놀즈수로 마찰계수를 계산합니다.
 
-```excel
+```text
 =ee.FRICTIONFACTOR(202.74, 0.046, 213850)
 ```
 
@@ -146,7 +146,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 **선형 보간**
 
-```excel
+```text
 =ee.INTERPOLATION1D(1.5, {1;2;3}, {10;20;50})
 =ee.INTERPOLATION1D(1.5, B1:B3, C1:C3)
 ```
@@ -155,7 +155,7 @@ MIT 해수 물성 모델을 기반으로 열물성을 계산합니다. 이 함�
 
 **3차 보간**
 
-```excel
+```text
 =ee.INTERPOLATION1D(1.5, {1;2;3}, {10;20;50}, "cubic")
 =ee.INTERPOLATION1D(1.5, B1:B3, C1:C3, "cubic")
 ```
