@@ -1,0 +1,22 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+
+const isKorean = Astro.url.pathname.startsWith('/ko/');
+const year = new Date().getFullYear();
+---
+
+<Default><slot /></Default>
+
+<footer class="ee-brand-footer">
+	<div>
+		<strong>eeFunction</strong>
+		<span>{isKorean ? 'Excel 엔지니어링 계산 도구' : 'Engineering calculations for Excel'}</span>
+	</div>
+	<nav aria-label={isKorean ? '관련 링크' : 'Related links'}>
+		<a href="https://eefunction.brbrsoft.com/">{isKorean ? '제품' : 'Product'}</a>
+		<a href="https://eefunction.brbrsoft.com/examples/">{isKorean ? '예제' : 'Examples'}</a>
+		<a href="https://eefunction.brbrsoft.com/security/">{isKorean ? '보안 및 신뢰' : 'Security & Trust'}</a>
+		<a href="https://github.com/tobony/eefunction-doc">GitHub</a>
+	</nav>
+	<small>© {year} BRBRSoft. Documentation content is provided for eeFunction users.</small>
+</footer>
