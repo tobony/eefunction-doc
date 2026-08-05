@@ -1,9 +1,9 @@
 ---
 title: eeFunction 문서
-description: eeFunction 사용 설명서
-template: doc
+description: eeFunction 설치, 함수 레퍼런스, 호환성 정보 및 릴리스 노트를 제공합니다.
+template: splash
 hero:
-  tagline: Excel에서 유체 물성을 빠르게 계산합니다.
+  tagline: Microsoft Excel에서 사용하는 엔지니어링 물성 함수와 검토 가능한 계산 워크플로입니다.
   image:
     file: ../../../assets/icon_eefunction.png
   actions:
@@ -11,16 +11,87 @@ hero:
       link: /ko/user-guide/getting-started/
       icon: right-arrow
       variant: primary
+    - text: 함수 둘러보기
+      link: /ko/function/engineering-function/
+      icon: open-book
+      variant: minimal
+    - text: 제품 사이트
+      link: https://eefunction.brbrsoft.com/
+      icon: external
+      variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Badge, Card, CardGrid } from '@astrojs/starlight/components';
+
+<p class="doc-kicker">
+  <Badge text="Free 문서" variant="success" />
+  <Badge text="Pro 문서 준비 중" variant="caution" />
+</p>
+
+<div class="doc-status-grid not-content">
+  <div><small>제품</small><strong>Excel용 eeFunction</strong></div>
+  <div><small>문서 범위</small><strong>Free + Pro 로드맵</strong></div>
+  <div><small>언어</small><strong>한국어 · English</strong></div>
+  <div><small>제공사</small><strong>BRBRSoft</strong></div>
+</div>
+
+## eeFunction 시작하기
 
 <CardGrid>
-	<Card title="Excel에서 함수 사용하기" icon="pencil">
-		Excel 함수처럼 `=ee.`를 입력해 사용할 수 있습니다. 기본 사용법은 [공학 함수](/ko/function/engineering-function)에서 확인하세요.
-	</Card>
-	<Card title="문서 둘러보기" icon="add-document">
-		처음 사용하는 경우 [시작하기](/ko/user-guide/getting-started/) 문서부터 확인하세요.
-	</Card>
+  <Card title="1. 호환성 확인" icon="approve-check">
+    [시작하기](/ko/user-guide/getting-started/)에서 지원되는 Excel 환경과 현재 제한사항을 먼저 확인합니다.
+  </Card>
+  <Card title="2. 추가 기능 설치" icon="add-document">
+    기본 [설치](/ko/user-guide/installation/) 절차를 따릅니다. 필요한 경우에만 [수동 설치](/ko/user-guide/installation_local/)를 사용합니다.
+  </Card>
+  <Card title="3. 함수 입력" icon="pencil">
+    Excel 셀에서 `=ee.`를 입력하고 함수를 선택한 다음, 계산 전에 매개변수 순서와 단위를 확인합니다.
+  </Card>
+  <Card title="4. 결과 검토" icon="information">
+    함수 레퍼런스에서 계산 모델, 유효 입력 범위, 결과 단위 및 플랫폼별 주의사항을 확인합니다.
+  </Card>
 </CardGrid>
 
+## 계산 분야별 탐색
+
+<div class="doc-category-grid not-content">
+  <a href="/ko/reference/02%20steamwater/"><small>열역학</small><strong>증기 및 물</strong></a>
+  <a href="/ko/function/engineering-function/#해수-특성---mit-모델"><small>열물성</small><strong>해수</strong></a>
+  <a href="/ko/function/engineering-function/#습공기---ashrae"><small>HVAC</small><strong>습공기</strong></a>
+  <a href="/ko/function/engineering-function/#압축성-가스"><small>가스 시스템</small><strong>천연가스</strong></a>
+  <a href="/ko/function/engineering-function/#배관-마찰계수"><small>배관 계산</small><strong>마찰계수</strong></a>
+  <a href="/ko/function/general-function/#단위-변환"><small>유틸리티</small><strong>단위 변환</strong></a>
+  <a href="/ko/function/engineering-function/#선형-및-3차-보간"><small>수치해석</small><strong>보간</strong></a>
+  <a href="https://eefunction.brbrsoft.com/examples/"><small>워크북</small><strong>엔지니어링 예제 ↗</strong></a>
+</div>
+
+## 사용자별 문서 경로
+
+<CardGrid>
+  <Card title="처음 사용하는 사용자" icon="rocket">
+    [시작하기](/ko/user-guide/getting-started/)에서 설치를 완료하고 기본 물성 계산을 실행합니다.
+  </Card>
+  <Card title="기존 Free 사용자" icon="setting">
+    [일반 함수](/ko/function/general-function/), [공학 함수](/ko/function/engineering-function/), [릴리스 노트](/ko/user-guide/developer-blog/)를 확인합니다.
+  </Card>
+  <Card title="Pro 평가 사용자" icon="star">
+    [eeFunction Pro 제품 페이지](https://eefunction.brbrsoft.com/pro/)와 준비 중인 예제를 확인합니다. Pro 전용 레퍼런스는 기능 출시 시점에 추가합니다.
+  </Card>
+  <Card title="계산 검토자" icon="document">
+    워크북을 승인하기 전에 레퍼런스에서 단위, 계산 근거, 유효 범위 및 알려진 제한사항을 확인합니다.
+  </Card>
+</CardGrid>
+
+## 문서 운영 원칙
+
+<div class="doc-trust-grid not-content">
+  <div><small>구문</small><strong>정확한 Excel 함수 시그니처</strong></div>
+  <div><small>범위</small><strong>유효 입력과 제한사항</strong></div>
+  <div><small>근거</small><strong>계산 모델과 기술 참고자료</strong></div>
+  <div><small>호환성</small><strong>플랫폼별 지원 여부</strong></div>
+</div>
+
+<div class="doc-callout">
+  <strong>제품 사이트와 기술 문서는 역할을 분리합니다.</strong>
+  <p>제품 정보, 가격, 예제 및 보안 정보는 <a href="https://eefunction.brbrsoft.com/">eefunction.brbrsoft.com</a>에서 확인하고, 설치 및 기술 레퍼런스는 이 문서 사이트에서 확인합니다.</p>
+</div>
