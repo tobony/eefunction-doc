@@ -20,7 +20,7 @@ Calculate steam or water properties using pressure, temperature, and other suppo
 
 **Example — specific enthalpy from pressure and temperature**
 
-```excel
+```text
 =ee.STEAMH_PT(2, 150)
 ```
 
@@ -34,7 +34,7 @@ Seawater thermophysical properties are based on the MIT seawater property model.
 
 **Example — density**
 
-```excel
+```text
 =ee.SEAWTR_DENSITY(25, 35, 1.013)
 ```
 
@@ -42,7 +42,7 @@ Result: `1023.34 kg/m³`
 
 **Example — specific heat**
 
-```excel
+```text
 =ee.SEAWTR_SPCHEAT(25, 35, 1.013)
 ```
 
@@ -62,7 +62,7 @@ Function pattern: `=ee.HUMIDAIR_xxx()`
 
 **Example — density from dry-bulb temperature, relative humidity, and ambient pressure**
 
-```excel
+```text
 =ee.HUMIDAIR_RHO_TDRY_RH_P(35, 0.6, 1.013)
 ```
 
@@ -78,7 +78,7 @@ Function pattern: `=ee.GASxxx()`
 
 **Example — density from pressure, temperature, and gas composition**
 
-```excel
+```text
 =ee.GASRHO_PT(2, 35, Methane[0.6]&Ethane[0.4])
 =ee.GASRHO_PT(2, 35, B3)
 ```
@@ -91,7 +91,7 @@ A cell reference such as `B3` can contain a composition string created manually 
 
 **Example — lower heating value by mass**
 
-```excel
+```text
 =ee.GASLHVMASS(Methane[0.6]&Ethane[0.4])
 ```
 
@@ -103,7 +103,7 @@ Function: `=ee.FluidString()`
 
 Create a gas-composition string from fluid names, fractions, and a mole- or mass-basis option.
 
-```excel
+```text
 =ee.FluidString({Methane;Ethane;Propane}, {0.6;0.3;0.1}, "mol")
 ```
 
@@ -111,7 +111,7 @@ Result: `Methane[0.6]&Ethane[0.3]&Propane[0.1]`
 
 Use the result directly in a gas-property function:
 
-```excel
+```text
 =ee.GASRHO_PT(2, 35, ee.FluidString({Methane;Ethane}, {0.6;0.4}))
 ```
 
@@ -128,7 +128,7 @@ Function: `=ee.FRICTIONFACTOR()`
 
 Calculate a pipe friction factor from inside diameter, absolute roughness, and Reynolds number.
 
-```excel
+```text
 =ee.FRICTIONFACTOR(202.74, 0.046, 213850)
 ```
 
@@ -146,7 +146,7 @@ Function: `=ee.INTERPOLATION1D()`
 
 **Linear interpolation**
 
-```excel
+```text
 =ee.INTERPOLATION1D(1.5, {1;2;3}, {10;20;50})
 =ee.INTERPOLATION1D(1.5, B1:B3, C1:C3)
 ```
@@ -155,7 +155,7 @@ Representative result: `15`
 
 **Cubic interpolation**
 
-```excel
+```text
 =ee.INTERPOLATION1D(1.5, {1;2;3}, {10;20;50}, "cubic")
 =ee.INTERPOLATION1D(1.5, B1:B3, C1:C3, "cubic")
 ```
