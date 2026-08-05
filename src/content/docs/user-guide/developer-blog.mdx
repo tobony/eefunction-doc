@@ -1,49 +1,70 @@
 ---
-title: Developer Blog
-description: Changelog and update logs.
+title: Release Notes
+description: Product and documentation changes for eeFunction.
 ---
 
-This page records updates and major changes.
+This page records notable eeFunction product and documentation changes. Function availability can vary by edition and Excel platform; verify current support in the relevant reference page.
 
-<br/>
+## 2026-08 — Documentation refresh
 
+### Changed
 
+- Moved the canonical documentation URL to `https://eefunction-doc.brbrsoft.com`.
+- Aligned the documentation design and navigation with the eeFunction product site.
+- Added direct links to the product, examples, pricing, and Security & Trust pages.
+- Reorganized the documentation homepage around onboarding, calculation categories, and review workflows.
+- Renamed **Developer Blog** to **Release Notes** while preserving the existing URL.
 
-#### 2026-01
-- Added Ammonia(NH3) Property functions entered with `=ee.NH3__()`.
-- Added Hydrogen(H2) Property functions entered with `=ee.HYDROGEN__()`.
+## 2026-01 — Hydrogen and ammonia functions
 
-#### 2024-12
-- Added Seawater Property functions entered with `=ee.SEAWTR__()`.
-- Added Gas Heating Value related functions.
+### Added
 
-#### 2024-05
-- Updated extensive content in eeFunction Docs.
-- Organized function descriptions and unit lists for reference.
+- Ammonia (`NH3`) property functions using the `=ee.NH3__()` namespace.
+- Hydrogen (`H2`) property functions using the `=ee.HYDROGEN__()` namespace.
 
-#### 2024-02
-- Opened the eeFunction Docs site.
+## 2024-12 — Seawater and gas heating value
 
+### Added
 
-#### 2023-07
-- Registered on MS AppSource, making installation easier.
-- Previously installed using Local Side Loading method.
+- Seawater property functions using the `=ee.SEAWTR__()` namespace.
+- Natural-gas heating-value functions.
 
+## 2024-05 — Reference documentation update
 
-#### 2023-04
-- Added Humid Air related functions using the `psychrolib` Library.
+### Changed
 
+- Expanded the eeFunction documentation.
+- Reorganized function descriptions and unit reference tables.
 
-#### 2023-03
-- Added IF97 Steam Table functions using the `xSteam` Library.
-- Added Gas Property functions using the `GERG2008` Library.
+## 2024-02 — Documentation site
 
+### Added
 
-#### 2022-05
-- Created the initial version as an Office Add-in.
-- Created to use CoolProp commands like `=ee.PROPSSI` in Web-Excel.
+- Opened the eeFunction documentation site.
 
+## 2023-07 — Microsoft AppSource distribution
 
+### Changed
 
-<br/><br/><br/><br/>
+- Published eeFunction through Microsoft AppSource for standard installation.
+- Retained local sideloading documentation for development and restricted environments.
 
+## 2023-04 — Humid-air calculations
+
+### Added
+
+- Humid-air functions based on the `psychrolib` library.
+
+## 2023-03 — Steam and gas properties
+
+### Added
+
+- IF97 steam-table functions based on the `xSteam` library.
+- Gas-property functions based on the `GERG2008` library.
+
+## 2022-05 — Initial Office Add-in
+
+### Added
+
+- Created the first eeFunction Office Add-in version.
+- Added support for using property commands such as `=ee.PROPSSI` in Excel for the web.
