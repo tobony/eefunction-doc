@@ -1,9 +1,8 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
 export default defineConfig({
-	site: 'https://eefunction-doc.pages.dev',
+	site: 'https://eefunction-doc.brbrsoft.com',
 	base: '/',
 	server: {
 		host: true,
@@ -19,10 +18,15 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
-			title: 'eeFunction Docs',
+			title: 'eeFunction Documentation',
 			customCss: [
 				'./src/styles/table.css',
+				'./src/styles/brand.css',
 			],
+			components: {
+				SocialIcons: './src/components/ProductLinks.astro',
+				Footer: './src/components/BrandFooter.astro',
+			},
 			logo: {
 				src: './src/assets/icon_eefunction.png',
 			},
@@ -37,11 +41,21 @@ export default defineConfig({
 					lang: 'ko',
 				},
 			},
+			head: [
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'theme-color',
+						content: '#071a2b',
+					},
+				},
+			],
+			lastUpdated: true,
 			social: [
 				{
 					icon: 'github',
-					label: 'Issues',
-					href: 'https://github.com/theangkko/eefunction-doc/issues',
+					label: 'GitHub',
+					href: 'https://github.com/tobony/eefunction-doc',
 				},
 			],
 			sidebar: [
@@ -52,7 +66,7 @@ export default defineConfig({
 						{ label: 'Getting Started', link: '/user-guide/getting-started/', translations: { ko: '시작하기' } },
 						{ label: 'Installation', link: '/user-guide/installation/', translations: { ko: '설치' } },
 						{ label: 'Manual Installation', link: '/user-guide/installation_local/', translations: { ko: '수동 설치' } },
-						{ label: 'Developer Blog', link: '/user-guide/developer-blog/', translations: { ko: '개발자 블로그' } },
+						{ label: 'Release Notes', link: '/user-guide/developer-blog/', translations: { ko: '릴리스 노트' } },
 						{ label: 'Support', link: '/user-guide/support-system/', translations: { ko: '지원 안내' } },
 						{ label: 'Privacy Policy', link: '/user-guide/privacy-policy/', translations: { ko: '개인정보 처리방침' } },
 					],
@@ -61,8 +75,8 @@ export default defineConfig({
 					label: 'Functions',
 					translations: { ko: '함수' },
 					items: [
-						{ label: 'General Function', link: '/function/general-function/', translations: { ko: '일반 함수' } },
-						{ label: 'Engineering Function', link: '/function/engineering-function/', translations: { ko: '공학 함수' } },
+						{ label: 'General Functions', link: '/function/general-function/', translations: { ko: '일반 함수' } },
+						{ label: 'Engineering Functions', link: '/function/engineering-function/', translations: { ko: '공학 함수' } },
 					],
 				},
 				{
