@@ -1,77 +1,96 @@
 ---
 title: 일반 함수
-description: 일반 유틸리티 함수 참조 페이지입니다.
-template: doc
+description: 단위 변환, 물리 상수 및 공통 계산을 위한 일반 유틸리티 함수입니다.
 ---
 
-이 페이지는 단위 변환, 물리 상수 및 일반적인 계산을 위한 유틸리티 함수를 제공합니다.
+import { Badge } from '@astrojs/starlight/components';
+
+<p class="doc-kicker">
+  <Badge text="Free" variant="success" />
+  <Badge text="현재 문서 제공" variant="note" />
+</p>
+
+일반 함수는 여러 엔지니어링 워크북에서 재사용할 수 있는 공통 유틸리티를 제공합니다. 반환값을 다른 수식에 연결하기 전에 허용되는 단위 표기와 결과 단위를 확인하세요.
 
 ## 단위 변환
-=ee.CONVERT()
 
-예) 서로 다른 단위 간 값 변환 <br/>
-`=ee.CONVERT(값, 원래_단위, 변환_단위)`
+함수: `=ee.CONVERT()`
 
-**온도 변환** <br/>
-`=ee.CONVERT(100, "C", "F")` → `212` °F  <br/>
-`=ee.CONVERT(273.15, "K", "C")` → `0` °C  <br/>
+구문:
 
-**압력 변환** <br/>
-`=ee.CONVERT(1, "bar", "psi")` → `14.504` psi  <br/>
-`=ee.CONVERT(101.325, "kPa", "atm")` → `1` atm  <br/>
+```excel
+=ee.CONVERT(값, 원래_단위, 변환_단위)
+```
 
-**길이 변환** <br/>
-`=ee.CONVERT(1, "m", "ft")` → `3.281` ft  <br/>
-`=ee.CONVERT(25.4, "mm", "inch")` → `1` inch  <br/>
+### 온도
 
-**질량 변환** <br/>
-`=ee.CONVERT(1, "kg", "lb")` → `2.205` lb  <br/>
-`=ee.CONVERT(1000, "kg", "ton")` → `1` ton  <br/>
+```excel
+=ee.CONVERT(100, "C", "F")
+=ee.CONVERT(273.15, "K", "C")
+```
 
-**지원되는 단위 카테고리:**
-- **온도**: C (섭씨), F (화씨), K (켈빈)
-- **압력**: bar, psi, Pa, kPa, MPa, atm
-- **길이**: m, cm, mm, km, ft, inch, yard
-- **질량**: kg, g, mg, lb, oz, ton
-- **부피**: m3, L, mL, gal, ft3
-- **에너지**: J, kJ, cal, kcal, BTU, kWh
+대표 결과: `212°F`, `0°C`
 
----
+### 압력
+
+```excel
+=ee.CONVERT(1, "bar", "psi")
+=ee.CONVERT(101.325, "kPa", "atm")
+```
+
+대표 결과: `14.504 psi`, `1 atm`
+
+### 길이
+
+```excel
+=ee.CONVERT(1, "m", "ft")
+=ee.CONVERT(25.4, "mm", "inch")
+```
+
+대표 결과: `3.281 ft`, `1 inch`
+
+### 질량
+
+```excel
+=ee.CONVERT(1, "kg", "lb")
+=ee.CONVERT(1000, "kg", "ton")
+```
+
+대표 결과: `2.205 lb`, `1 ton`
+
+### 지원 단위 카테고리
+
+| 카테고리 | 주요 단위 기호 |
+| --- | --- |
+| 온도 | `C`, `F`, `K` |
+| 압력 | `bar`, `psi`, `Pa`, `kPa`, `MPa`, `atm` |
+| 길이 | `m`, `cm`, `mm`, `km`, `ft`, `inch`, `yard` |
+| 질량 | `kg`, `g`, `mg`, `lb`, `oz`, `ton` |
+| 부피 | `m3`, `L`, `mL`, `gal`, `ft3` |
+| 에너지 | `J`, `kJ`, `cal`, `kcal`, `BTU`, `kWh` |
+
+함수 구현에서 대소문자를 구분하는 단위명과 별칭이 있을 수 있습니다. 상세 별칭과 오류 조건은 함수별 레퍼런스 개편 단계에서 추가합니다.
 
 ## 물리 상수
-=ee.CONSTANT()
 
-예) 보편적인 물리 상수 가져오기 <br/>
-`=ee.CONSTANT(상수명)`
+함수: `=ee.CONSTANT()`
 
-**기체 상수** <br/>
-`=ee.CONSTANT("R")` → `8.314` J/(mol·K)  <br/>
+구문:
 
-**표준 중력 가속도** <br/>
-`=ee.CONSTANT("g")` → `9.807` m/s²  <br/>
+```excel
+=ee.CONSTANT(상수명)
+```
 
-**아보가드로 수** <br/>
-`=ee.CONSTANT("Na")` → `6.022e23` mol⁻¹  <br/>
+| 상수 | 예제 | 대표 결과 |
+| --- | --- | --- |
+| 기체 상수 | `=ee.CONSTANT("R")` | `8.314 J/(mol·K)` |
+| 표준 중력가속도 | `=ee.CONSTANT("g")` | `9.807 m/s²` |
+| 아보가드로 상수 | `=ee.CONSTANT("Na")` | `6.022e23 mol⁻¹` |
+| 볼츠만 상수 | `=ee.CONSTANT("k")` | `1.381e-23 J/K` |
+| 플랑크 상수 | `=ee.CONSTANT("h")` | `6.626e-34 J·s` |
+| 광속 | `=ee.CONSTANT("c")` | `2.998e8 m/s` |
+| 슈테판–볼츠만 상수 | `=ee.CONSTANT("sigma")` | `5.670e-8 W/(m²·K⁴)` |
+| 원주율 | `=ee.CONSTANT("pi")` | `3.14159…` |
+| 오일러 수 | `=ee.CONSTANT("e")` | `2.71828…` |
 
-**볼츠만 상수** <br/>
-`=ee.CONSTANT("k")` → `1.381e-23` J/K  <br/>
-
-**플랑크 상수** <br/>
-`=ee.CONSTANT("h")` → `6.626e-34` J·s  <br/>
-
-**광속** <br/>
-`=ee.CONSTANT("c")` → `2.998e8` m/s  <br/>
-
-**슈테판-볼츠만 상수** <br/>
-`=ee.CONSTANT("sigma")` → `5.670e-8` W/(m²·K⁴)  <br/>
-
-**사용 가능한 상수:**
-- **R**: 기체 상수 (8.314 J/(mol·K))
-- **g**: 표준 중력 가속도 (9.807 m/s²)
-- **Na**: 아보가드로 수 (6.022e23 mol⁻¹)
-- **k**: 볼츠만 상수 (1.381e-23 J/K)
-- **h**: 플랑크 상수 (6.626e-34 J·s)
-- **c**: 광속 (2.998e8 m/s)
-- **sigma**: 슈테판-볼츠만 상수 (5.670e-8 W/(m²·K⁴))
-- **pi**: 원주율 (3.14159...)
-- **e**: 오일러 수 (2.71828...)
+표의 값은 설명을 위한 대표 반올림 값입니다. 문서의 숫자를 복사하기보다 함수가 Excel에 반환한 값을 사용하세요.
