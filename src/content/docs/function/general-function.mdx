@@ -1,77 +1,96 @@
 ---
-title: General Function
-description: General utility function examples and usage notes.
-template: doc
+title: General Functions
+description: General utility functions for unit conversion, constants, and common calculations.
 ---
 
-This page provides general utility functions for unit conversions, physical constants, and common calculations.
+import { Badge } from '@astrojs/starlight/components';
+
+<p class="doc-kicker">
+  <Badge text="Free" variant="success" />
+  <Badge text="Available in the current documentation" variant="note" />
+</p>
+
+General functions provide common utilities that can be reused across engineering workbooks. Verify the accepted unit spelling and the returned unit before using a result in a downstream formula.
 
 ## Unit Conversion
-=ee.CONVERT()
 
-ex) Convert values between different units <br/>
-`=ee.CONVERT(value, from_unit, to_unit)`
+Function: `=ee.CONVERT()`
 
-**Temperature Conversion** <br/>
-`=ee.CONVERT(100, "C", "F")` → `212` °F  <br/>
-`=ee.CONVERT(273.15, "K", "C")` → `0` °C  <br/>
+Syntax:
 
-**Pressure Conversion** <br/>
-`=ee.CONVERT(1, "bar", "psi")` → `14.504` psi  <br/>
-`=ee.CONVERT(101.325, "kPa", "atm")` → `1` atm  <br/>
+```excel
+=ee.CONVERT(value, from_unit, to_unit)
+```
 
-**Length Conversion** <br/>
-`=ee.CONVERT(1, "m", "ft")` → `3.281` ft  <br/>
-`=ee.CONVERT(25.4, "mm", "inch")` → `1` inch  <br/>
+### Temperature
 
-**Mass Conversion** <br/>
-`=ee.CONVERT(1, "kg", "lb")` → `2.205` lb  <br/>
-`=ee.CONVERT(1000, "kg", "ton")` → `1` ton  <br/>
+```excel
+=ee.CONVERT(100, "C", "F")
+=ee.CONVERT(273.15, "K", "C")
+```
 
-**Supported Unit Categories:**
-- **Temperature**: C (Celsius), F (Fahrenheit), K (Kelvin)
-- **Pressure**: bar, psi, Pa, kPa, MPa, atm
-- **Length**: m, cm, mm, km, ft, inch, yard
-- **Mass**: kg, g, mg, lb, oz, ton
-- **Volume**: m3, L, mL, gal, ft3
-- **Energy**: J, kJ, cal, kcal, BTU, kWh
+Representative results: `212°F`, `0°C`
 
----
+### Pressure
+
+```excel
+=ee.CONVERT(1, "bar", "psi")
+=ee.CONVERT(101.325, "kPa", "atm")
+```
+
+Representative results: `14.504 psi`, `1 atm`
+
+### Length
+
+```excel
+=ee.CONVERT(1, "m", "ft")
+=ee.CONVERT(25.4, "mm", "inch")
+```
+
+Representative results: `3.281 ft`, `1 inch`
+
+### Mass
+
+```excel
+=ee.CONVERT(1, "kg", "lb")
+=ee.CONVERT(1000, "kg", "ton")
+```
+
+Representative results: `2.205 lb`, `1 ton`
+
+### Supported unit categories
+
+| Category | Common unit symbols |
+| --- | --- |
+| Temperature | `C`, `F`, `K` |
+| Pressure | `bar`, `psi`, `Pa`, `kPa`, `MPa`, `atm` |
+| Length | `m`, `cm`, `mm`, `km`, `ft`, `inch`, `yard` |
+| Mass | `kg`, `g`, `mg`, `lb`, `oz`, `ton` |
+| Volume | `m3`, `L`, `mL`, `gal`, `ft3` |
+| Energy | `J`, `kJ`, `cal`, `kcal`, `BTU`, `kWh` |
+
+Unit names and aliases are case-sensitive when indicated by the function implementation. Detailed alias and error documentation will be added in the function-level reference phase.
 
 ## Physical Constants
-=ee.CONSTANT()
 
-ex) Get universal physical constants <br/>
-`=ee.CONSTANT(constant_name)`
+Function: `=ee.CONSTANT()`
 
-**Universal Gas Constant** <br/>
-`=ee.CONSTANT("R")` → `8.314` J/(mol·K)  <br/>
+Syntax:
 
-**Standard Gravity** <br/>
-`=ee.CONSTANT("g")` → `9.807` m/s²  <br/>
+```excel
+=ee.CONSTANT(constant_name)
+```
 
-**Avogadro's Number** <br/>
-`=ee.CONSTANT("Na")` → `6.022e23` mol⁻¹  <br/>
+| Constant | Example | Representative result |
+| --- | --- | --- |
+| Universal gas constant | `=ee.CONSTANT("R")` | `8.314 J/(mol·K)` |
+| Standard gravity | `=ee.CONSTANT("g")` | `9.807 m/s²` |
+| Avogadro constant | `=ee.CONSTANT("Na")` | `6.022e23 mol⁻¹` |
+| Boltzmann constant | `=ee.CONSTANT("k")` | `1.381e-23 J/K` |
+| Planck constant | `=ee.CONSTANT("h")` | `6.626e-34 J·s` |
+| Speed of light | `=ee.CONSTANT("c")` | `2.998e8 m/s` |
+| Stefan–Boltzmann constant | `=ee.CONSTANT("sigma")` | `5.670e-8 W/(m²·K⁴)` |
+| Pi | `=ee.CONSTANT("pi")` | `3.14159…` |
+| Euler's number | `=ee.CONSTANT("e")` | `2.71828…` |
 
-**Boltzmann Constant** <br/>
-`=ee.CONSTANT("k")` → `1.381e-23` J/K  <br/>
-
-**Planck Constant** <br/>
-`=ee.CONSTANT("h")` → `6.626e-34` J·s  <br/>
-
-**Speed of Light** <br/>
-`=ee.CONSTANT("c")` → `2.998e8` m/s  <br/>
-
-**Stefan-Boltzmann Constant** <br/>
-`=ee.CONSTANT("sigma")` → `5.670e-8` W/(m²·K⁴)  <br/>
-
-**Available Constants:**
-- **R**: Universal gas constant (8.314 J/(mol·K))
-- **g**: Standard gravity (9.807 m/s²)
-- **Na**: Avogadro's number (6.022e23 mol⁻¹)
-- **k**: Boltzmann constant (1.381e-23 J/K)
-- **h**: Planck constant (6.626e-34 J·s)
-- **c**: Speed of light (2.998e8 m/s)
-- **sigma**: Stefan-Boltzmann constant (5.670e-8 W/(m²·K⁴))
-- **pi**: Pi (3.14159...)
-- **e**: Euler's number (2.71828...)
+The displayed values are representative rounded values. Use the returned Excel value rather than copying a rounded value from this page.
