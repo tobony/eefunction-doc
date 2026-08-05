@@ -1,127 +1,163 @@
 ---
-title: Engineering Function
-description: Engineering function examples and supported calculation groups.
+title: Engineering Functions
+description: Engineering calculation groups, syntax patterns, and representative Excel examples.
 ---
-   
-## Steam Water - IF97 Steam Table 
-=ee.STEAMxxx()
 
-ex) Get Steam Entalpy with (Pressure, Temperature) <br/>
-`=ee.STEAMH_PT()`
+import { Badge } from '@astrojs/starlight/components';
 
-Input as 2 bara pressure and 150 deg.C Temperature  <br/>
-`=ee.STEAMH_PT(2, 150)`    
-`=2769.09` kJ/kg Enthalpy of Steam <br/>
+<p class="doc-kicker">
+  <Badge text="Free functions documented" variant="success" />
+  <Badge text="Pro references added at release" variant="caution" />
+</p>
 
-<br />
+This page provides a category-level overview. The next documentation phase will separate each function into its own reference page with parameters, units, valid ranges, errors, compatibility, and technical sources.
 
+## Steam Water - IF97 Steam Table
+
+Function pattern: `=ee.STEAMxxx()`
+
+Calculate steam or water properties using pressure, temperature, and other supported state variables.
+
+**Example — specific enthalpy from pressure and temperature**
+
+```excel
+=ee.STEAMH_PT(2, 150)
+```
+
+Result: `2769.09 kJ/kg`
 
 ## Seawater Properties - MIT Model
-=ee.SEAWTR_xxx()
 
-Seawater thermophysical properties based on MIT seawater property library.  
-All functions use Temperature (°C), Salinity (g/kg), and Pressure (bar.a) as inputs.
+Function pattern: `=ee.SEAWTR_xxx()`
 
-ex) Get Seawater Density with (Temperature & Salinity & Pressure) <br/>
-`=ee.SEAWTR_DENSITY()`
+Seawater thermophysical properties are based on the MIT seawater property model. Functions in this group generally use temperature (`°C`), salinity (`g/kg`), and absolute pressure (`bar(a)`) as inputs.
 
-Input as 25°C, 35 g/kg salinity, 1.013 bara <br/>
-`=ee.SEAWTR_DENSITY(25, 35, 1.013)`     
-`=1023.34` kg/m3 density of seawater  <br/>
+**Example — density**
 
-ex) Get Seawater Specific Heat with (Temperature & Salinity & Pressure) <br/>
-`=ee.SEAWTR_SPCHEAT(25, 35, 1.013)`     
-`=3.99` kJ/kg-K specific heat  <br/>
+```excel
+=ee.SEAWTR_DENSITY(25, 35, 1.013)
+```
 
-**Typical Input Ranges:**
-- Temperature: 0 to 120°C
-- Salinity: 0 to 120 g/kg (seawater ~35 g/kg)
-- Pressure: 0 to 12 bar.a
+Result: `1023.34 kg/m³`
 
-<br />
+**Example — specific heat**
+
+```excel
+=ee.SEAWTR_SPCHEAT(25, 35, 1.013)
+```
+
+Result: `3.99 kJ/(kg·K)`
+
+**Typical input ranges**
+
+- Temperature: `0–120°C`
+- Salinity: `0–120 g/kg` (typical seawater is approximately `35 g/kg`)
+- Absolute pressure: `0–12 bar(a)`
+
+Always confirm the applicable range on the detailed function page before using a result for design approval.
 
 ## Humid Air - ASHRAE
-=ee.HUMIDAIR_xxx()
 
-ex) Get Denity with (Dry Temperature, Relative Humid Ratio and Ambient Pressure) <br/>
-`=ee.HUMIDAIR_RHO_TDRY_RH_P()`
+Function pattern: `=ee.HUMIDAIR_xxx()`
 
-Input as 150 deg.C Temperature, 60% Relative Humid Ratio, and Ambient Pressure, bara <br/>
-`=ee.HUMIDAIR_RHO_TDRY_RH_P(35, 0.6, 1.013)`     
-`=1.13082` kg/m3 density of Air  <br/>
+**Example — density from dry-bulb temperature, relative humidity, and ambient pressure**
 
-<br />
+```excel
+=ee.HUMIDAIR_RHO_TDRY_RH_P(35, 0.6, 1.013)
+```
 
-## Compressible Gas 
+Result: `1.13082 kg/m³`
+
+Relative humidity is entered as a ratio, so `0.6` represents `60%`.
+
+## Compressible Gas
+
 ### GERG2008 - Gas Property
-=ee.GASxxx()
 
-ex) Get Denity with (Dry Temperature, Relative Humid Ratio and Ambient Pressure) <br/>
-`=ee.GASRHO_PT()`
+Function pattern: `=ee.GASxxx()`
 
-Input as 2 bara, 35 deg.C Temperature with FluidName<br/>
-`=ee.GASRHO_PT(2, 35, Methane[0.6]&Ethane[0.4])`     
-`=ee.GASRHO_PT(2, 35, B3_excel Range)`     
-`=1.70111` kg/m3 density of Gas  <br/>
+**Example — density from pressure, temperature, and gas composition**
+
+```excel
+=ee.GASRHO_PT(2, 35, Methane[0.6]&Ethane[0.4])
+=ee.GASRHO_PT(2, 35, B3)
+```
+
+Result: `1.70111 kg/m³`
+
+A cell reference such as `B3` can contain a composition string created manually or with `ee.FluidString()`.
 
 ### ISO 6976 - Natural Gas Heating Value
-=ee.GASxxx()
 
-ex) Get LHV Lower Heating Value_kJ/kg (option with temperature) <br/>
-`=ee.GASLHVMASS()`
+**Example — lower heating value by mass**
 
-Input with FluidName <br/>
-`=ee.GASLHVMASS(Methane[0.6]&Ethane[0.4])`    
-`=48630.14` kJ/kg as LHV of Gas <br/>
+```excel
+=ee.GASLHVMASS(Methane[0.6]&Ethane[0.4])
+```
 
-<br />
+Result: `48630.14 kJ/kg`
 
 ## Fluid Composition Helper
-=ee.FluidString()
 
-ex) Create fluid composition string with (fluid names & fractions & ratio method) <br/>
-`=ee.FluidString()`
+Function: `=ee.FluidString()`
 
-Input fluid names and mole/mass fractions to create composition string for gas calculations <br/>
-`=ee.FluidString({Methane;Ethane;Propane}, {0.6;0.3;0.1}, "mol")`     
-`=Methane[0.6]&Ethane[0.3]&Propane[0.1]` composition string  <br/>
+Create a gas-composition string from fluid names, fractions, and a mole- or mass-basis option.
 
-Use this string directly in gas property functions <br/>
-`=ee.GASRHO_PT(2, 35, FluidString({Methane;Ethane}, {0.6;0.4}))`     
+```excel
+=ee.FluidString({Methane;Ethane;Propane}, {0.6;0.3;0.1}, "mol")
+```
 
-**Note:** 
-- Default ratio method is "mol" (mole basis)
-- Can also use "mass" for mass basis
-- Can reference Excel ranges for names and fractions
-- Used with GERG2008 gas functions
+Result: `Methane[0.6]&Ethane[0.3]&Propane[0.1]`
 
+Use the result directly in a gas-property function:
 
-<br />
+```excel
+=ee.GASRHO_PT(2, 35, ee.FluidString({Methane;Ethane}, {0.6;0.4}))
+```
+
+Notes:
+
+- The default ratio method is `"mol"`.
+- Use `"mass"` for mass-basis fractions.
+- Excel ranges can be used for fluid names and fractions.
+- This helper is intended for use with GERG2008 gas functions.
 
 ## Friction Factor of pipe
-=ee.FRICTIONFACTOR()
 
-ex) Get friction factor with (dia_mm, roughness_mm, reynolds) <br/>
-Input as DN200, 202.74 mm pipe inner diameter, 0.046 carbon pipe absolute roughness, reynolds <br/>
-`=ee.FRICTIONFACTOR(202.74, 0.046, 213850)`     
-`=0.0171` friction factor  <br/>
+Function: `=ee.FRICTIONFACTOR()`
 
+Calculate a pipe friction factor from inside diameter, absolute roughness, and Reynolds number.
 
-<br />
+```excel
+=ee.FRICTIONFACTOR(202.74, 0.046, 213850)
+```
 
+Representative inputs:
+
+- Inside diameter: `202.74 mm`
+- Absolute roughness: `0.046 mm`
+- Reynolds number: `213850`
+
+Result: `0.0171`
 
 ## Interpolation as Linear, Cubic
-=ee.INTERPOLATION1D()
 
-ex) Get interpolated value with (X value, X-Table, Y-Table, "Linear"=Option Default) <br/>
-- linear method   
-`=ee.INTERPOLATION1D(1.5, {1;2;3}, {10;20;50})`     
-`=ee.INTERPOLATION1D(1.5, B1:B3_excel Range, C1:C3_excel Range)`     
-`=15` get result  <br/>
+Function: `=ee.INTERPOLATION1D()`
 
-- cubic method   
-`=ee.INTERPOLATION1D(1.5, {1;2;3}, {10;20;50}, "cubic")`     
-`=ee.INTERPOLATION1D(1.5, B1:B3_excel Range, C1:C3_excel Range, "cubic")`     
-`=10` get result  <br/>
+**Linear interpolation**
 
-<br />
+```excel
+=ee.INTERPOLATION1D(1.5, {1;2;3}, {10;20;50})
+=ee.INTERPOLATION1D(1.5, B1:B3, C1:C3)
+```
+
+Representative result: `15`
+
+**Cubic interpolation**
+
+```excel
+=ee.INTERPOLATION1D(1.5, {1;2;3}, {10;20;50}, "cubic")
+=ee.INTERPOLATION1D(1.5, B1:B3, C1:C3, "cubic")
+```
+
+Representative result: `10`
