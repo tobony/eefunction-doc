@@ -65,7 +65,6 @@ export default defineConfig({
 					items: [
 						{ label: 'Getting Started', link: '/user-guide/getting-started/', translations: { ko: '시작하기' } },
 						{ label: 'Installation', link: '/user-guide/installation/', translations: { ko: '설치' } },
-						{ label: 'Manual Installation', link: '/user-guide/installation_local/', translations: { ko: '수동 설치' } },
 						{ label: 'Release Notes', link: '/user-guide/developer-blog/', translations: { ko: '릴리스 노트' } },
 						{ label: 'Support', link: '/user-guide/support-system/', translations: { ko: '지원 안내' } },
 						{ label: 'Privacy Policy', link: '/user-guide/privacy-policy/', translations: { ko: '개인정보 처리방침' } },
