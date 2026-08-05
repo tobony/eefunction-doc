@@ -1,0 +1,51 @@
+name: Sync package-lock for Cloudflare
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/sync-package-lock.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync-package-lock:
+    name: Regenerate and validate package-lock
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Regenerate package-lock.json
+        run: npm install --package-lock-only
+
+      - name: Validate clean installation
+        run: npm ci
+
+      - name: Validate production build
+        run: npm run build
+
+      - name: Commit synchronized lock file
+        shell: bash
+        run: |
+          if git diff --quiet -- package-lock.json; then
+            echo "package-lock.json is already synchronized."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "fix: sync package-lock with package.json"
+          git push origin HEAD:main
