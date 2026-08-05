@@ -1,27 +1,97 @@
 ---
-title: eeFunction Docs
-description: Documentation of eeFunction
-template: doc
+title: eeFunction Documentation
+description: Installation guides, function references, compatibility information, and release notes for eeFunction.
+template: splash
 hero:
-  tagline: To quickly calculate fluid properties in Excel.
+  tagline: Engineering property functions and traceable calculation workflows for Microsoft Excel.
   image:
     file: ../../assets/icon_eefunction.png
   actions:
-    - text: Get Started
+    - text: Get started
       link: /user-guide/getting-started/
       icon: right-arrow
       variant: primary
+    - text: Browse functions
+      link: /function/engineering-function/
+      icon: open-book
+      variant: minimal
+    - text: Product site
+      link: https://eefunction.brbrsoft.com/
+      icon: external
+      variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Badge, Card, CardGrid } from '@astrojs/starlight/components';
+
+<p class="doc-kicker">
+  <Badge text="Free documentation" variant="success" />
+  <Badge text="Pro documentation in preparation" variant="caution" />
+</p>
+
+<div class="doc-status-grid not-content">
+  <div><small>Product</small><strong>eeFunction for Excel</strong></div>
+  <div><small>Documentation</small><strong>Free + Pro roadmap</strong></div>
+  <div><small>Languages</small><strong>English · 한국어</strong></div>
+  <div><small>Publisher</small><strong>BRBRSoft</strong></div>
+</div>
+
+## Start using eeFunction
 
 <CardGrid>
-	<Card title="Use function in Excel" icon="pencil">
-	Input `=ee.` to use eeFunction like a native Excel function. See [Engineering Function](/function/engineering-function/) for available engineering functions.
-	</Card>
-	<Card title="Start with installation" icon="add-document">
-	Follow [Getting Started](/user-guide/getting-started/) and [Installation](/user-guide/installation/) to add eeFunction to Excel.
-	</Card>
+  <Card title="1. Check compatibility" icon="approve-check">
+    Review the supported Excel environments and current limitations in [Getting Started](/user-guide/getting-started/).
+  </Card>
+  <Card title="2. Install the add-in" icon="add-document">
+    Follow the standard [Installation](/user-guide/installation/) guide. Use [Manual Installation](/user-guide/installation_local/) only when required.
+  </Card>
+  <Card title="3. Enter a function" icon="pencil">
+    Type `=ee.` in an Excel cell, select a function, and verify the parameter order and units before calculation.
+  </Card>
+  <Card title="4. Review the result" icon="information">
+    Confirm the calculation model, valid input range, result unit, and platform notes in the function reference.
+  </Card>
 </CardGrid>
 
+## Browse by calculation area
 
+<div class="doc-category-grid not-content">
+  <a href="/reference/02%20steamwater/"><small>Thermodynamics</small><strong>Steam & Water</strong></a>
+  <a href="/function/engineering-function/#seawater-properties---mit-model"><small>Thermophysical</small><strong>Seawater</strong></a>
+  <a href="/function/engineering-function/#humid-air---ashrae"><small>HVAC</small><strong>Humid Air</strong></a>
+  <a href="/function/engineering-function/#compressible-gas"><small>Gas systems</small><strong>Natural Gas</strong></a>
+  <a href="/function/engineering-function/#friction-factor-of-pipe"><small>Pipe calculations</small><strong>Friction Factor</strong></a>
+  <a href="/function/general-function/#unit-conversion"><small>Utilities</small><strong>Unit Conversion</strong></a>
+  <a href="/function/engineering-function/#interpolation-as-linear-cubic"><small>Numerical methods</small><strong>Interpolation</strong></a>
+  <a href="https://eefunction.brbrsoft.com/examples/"><small>Workbooks</small><strong>Engineering Examples ↗</strong></a>
+</div>
+
+## Choose a documentation path
+
+<CardGrid>
+  <Card title="New user" icon="rocket">
+    Begin with [Getting Started](/user-guide/getting-started/), install eeFunction, and run a basic property calculation.
+  </Card>
+  <Card title="Existing Free user" icon="setting">
+    Browse [General Functions](/function/general-function/), [Engineering Functions](/function/engineering-function/), and [Release Notes](/user-guide/developer-blog/).
+  </Card>
+  <Card title="Pro evaluation" icon="star">
+    Review the [eeFunction Pro product page](https://eefunction.brbrsoft.com/pro/) and planned examples. Pro-specific reference pages will be added as features are released.
+  </Card>
+  <Card title="Engineering reviewer" icon="document">
+    Use the reference pages to check units, calculation sources, valid ranges, and known limitations before approving a workbook.
+  </Card>
+</CardGrid>
+
+## Documentation principles
+
+<div class="doc-trust-grid not-content">
+  <div><small>Syntax</small><strong>Exact Excel function signatures</strong></div>
+  <div><small>Range</small><strong>Valid inputs and limitations</strong></div>
+  <div><small>Evidence</small><strong>Models and technical references</strong></div>
+  <div><small>Compatibility</small><strong>Platform-specific support</strong></div>
+</div>
+
+<div class="doc-callout">
+  <strong>Product and documentation are separate by design.</strong>
+  <p>Use <a href="https://eefunction.brbrsoft.com/">eefunction.brbrsoft.com</a> for product information, pricing, examples, and trust information. Use this site for installation and technical reference content.</p>
+</div>
